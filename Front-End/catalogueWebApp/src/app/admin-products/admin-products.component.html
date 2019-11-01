@@ -1,0 +1,91 @@
+<div class="alert {{style}}" *ngIf="style && message">
+  {{message}}
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h3>Gestion des produits</h3></div>
+  <div class="panel-body">
+    <div>
+      <button class="btn btn-success" (click)="onNewProduct()">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button>
+    </div>
+    <p></p>
+
+    <div *ngIf="mode=='new-product'" class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="onSaveProduct(f.value)">
+        <div class="form-group">
+          <label for="name" class="control-label">Label</label>
+          <input type="text" id="name" ngModel name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="prix" class="control-label">Prix</label>
+          <input type="number" id="prix" ngModel name="prix" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="categoryPro" class="control-label">Categorie</label>
+          <select  id="categoryPro" [ngModel]="categories._embedded.categories[0].name"  name="category" class="form-control" >
+            <option *ngFor="let cat of categories._embedded.categories" [value]="cat.name">{{cat.name}}</option>
+          </select>
+        </div>
+        <button class="btn btn-success">Save</button>
+      </form>
+    </div>
+
+    <div *ngIf="mode=='edit-product' && currentProduct" class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="onSaveProductEdit(f.value)">
+        <div class="form-group">
+          <label for="namePro" class="control-label">Name</label>
+          <input type="text" id="namePro" [(ngModel)]="currentProduct.name"  name="name" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="prixPro" class="control-label">Prix</label>
+          <input type="number" id="prixPro" [(ngModel)]="currentProduct.prix"  name="prix" class="form-control" >
+        </div>
+        <button class="btn btn-success">Save</button>
+      </form>
+    </div>
+
+    <div *ngIf="mode=='edit-roles'" class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="onSaveRoleUserEdit(f.value)">
+        <div class="form-group">
+          <input type="hidden" [ngModel]="currentUser.username"  name="username" class="form-control" *ngIf="currentUser">
+        </div>
+        <div class="form-group">
+          <label for="role" class="control-label">Roles</label>
+          <select id="role" ngModel="ADMIN" class="form-control" name="role" *ngIf="currentUser">
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+          </select>
+        </div>
+        <button class="btn btn-success">Save</button>
+      </form>
+    </div>
+
+    <table class="table table-striped " *ngIf="products._embedded && mode=='list-products'">
+      <thead>
+      <tr><th>Name</th><th>Prix</th><th>Categorie</th></tr>
+      </thead>
+      <tbody >
+      <tr *ngFor="let product of products._embedded.products">
+        <td>{{product.name}}</td>
+        <td>
+          {{product.prix | number:"0.4"}}
+        </td>
+        <td>
+          {{product._embedded.category.name}}
+        </td>
+
+        <td>
+          <button class="btn btn-danger" (click)="onDeleteProduct(product)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+          <button class="btn btn-primary" (click)="onEditProduct(product)">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

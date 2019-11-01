@@ -1,0 +1,40 @@
+<h2 *ngIf="categorie">{{categorie.name}}s</h2><br>
+<div>
+  <button class="btn btn-success" (click)="onNewProduct()">
+    <span class="glyphicon glyphicon-plus"></span>
+  </button>
+</div><br>
+
+<div *ngIf="mode=='new-product'" class="col-md-6">
+  <form #f="ngForm" (ngSubmit)="onSaveProduct(f.value)">
+    <div class="form-group">
+      <label for="name" class="control-label">Label</label>
+      <input type="text" id="name" ngModel name="name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="prix" class="control-label">Prix</label>
+      <input type="number" id="prix" ngModel name="prix" class="form-control" >
+    </div>
+    <div class="form-group">
+      <input type="hidden" [ngModel]="categorie.name" name="category" class="form-control">
+    </div>
+    <button class="btn btn-success">Save</button>
+  </form>
+</div>
+
+<table class="table table-striped" *ngIf="products && mode=='list-products'">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let p of products._embedded.products">
+      <td>{{p.name}}</td>
+      <td>{{p.prix | number:'0.3'}}</td>
+    </tr>
+    </tbody>
+</table>
+

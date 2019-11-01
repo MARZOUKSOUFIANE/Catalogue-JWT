@@ -1,0 +1,25 @@
+<h2>Tous les produits</h2>
+
+<table class="table table-striped " *ngIf="products">
+  <thead>
+  <tr><th>Name</th><th>Prix</th><th>Categorie</th></tr>
+  </thead>
+  <tbody >
+  <tr *ngFor="let product of products._embedded.products">
+    <td>{{product.name}}</td>
+    <td>
+      {{product.prix | number:"0.4"}}
+    </td>
+    <td *ngIf="product._embedded">
+      {{product._embedded.category.name}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<ul *ngIf="pages" class="nav nav-pills">
+  <li *ngFor="let p of pages; let i=index" [ngClass]="currentPage==i?'active':''" class="clickable">
+    <a (click)="onPageProduct(i)" class="btn">{{i}}</a>
+  </li>
+</ul>
