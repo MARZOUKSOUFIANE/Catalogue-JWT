@@ -15,7 +15,7 @@
   ### le microservice "security_service" permet de :
   -Créer des nouveaux comptes utilisateurs
   -L'authentification des utilisateurs existants est la création des tokens JWT.
-  ##### Il utilise comme technologies:
+  ##### <u>Il utilise comme technologies:</u>
         -Spring boot
         -Spring Security
         -Https(self signed certificate)
@@ -28,10 +28,10 @@
    <br><br> 
    
   ### la partie front-end permet :
-la communication avec les deux microservices a travers JWT.
-l'authentification/gestion des rôles utilisateurs(/stockage des tokens en local Storage.
-La création des nouveaux comptes utilisateurs ou la modification des comptes existants.
-La gestion des catégories(ajout/modification/suppression).
-La gestion des produits(ajout/modification/suppression).
+    -la communication avec les deux microservices a travers JWT.
+    -l'authentification/gestion des rôles utilisateurs(/stockage des tokens en local Storage.
+    -La création des nouveaux comptes utilisateurs ou la modification des comptes existants.
+    -La gestion des catégories(ajout/modification/suppression).
+    -La gestion des produits(ajout/modification/suppression).
   
                                                                                                                                                                                            
