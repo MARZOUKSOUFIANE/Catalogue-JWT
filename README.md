@@ -29,7 +29,7 @@
    
   ### la partie front-end permet :
     -la communication avec les deux microservices a travers JWT.
-    -l'authentification/gestion des rôles utilisateurs(/stockage des tokens en local Storage.
+    -l'authentification/gestion des rôles utilisateurs("ADMIN","USER")/stockage des tokens en local Storage.
     -La création des nouveaux comptes utilisateurs ou la modification des comptes existants.
     -La gestion des catégories(ajout/modification/suppression).
     -La gestion des produits(ajout/modification/suppression).
