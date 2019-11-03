@@ -1,4 +1,4 @@
-                                                                                                
+﻿                                                                                                
   ## Un projet web qui se compose de deux microservices SPRING BOOT et une partie frontend ANGULAR .
   
   ### le microservice "catalogue-service-mongodb":
@@ -8,7 +8,7 @@
         -Spring security
         -Spring Data
         -MongoDB
-        -JWT
+        -JWT 
         
  <br><br> 
   
